@@ -1,5 +1,8 @@
 package cursojava.classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Aluno {
 
 	String nome;
@@ -13,14 +16,14 @@ public class Aluno {
 	String nomeEscola;
 	String serieMatriculado;
 	
-	private Disciplina disciplina = new Disciplina();
+	private List<Disciplina> disciplina = new ArrayList<Disciplina>();
 	
-	
-	public Disciplina getDisciplina() {
+
+	public List<Disciplina> getDisciplina() {
 		return disciplina;
 	}
 
-	public void setDisciplina(Disciplina disciplina) {
+	public void setDisciplina(List<Disciplina> disciplina) {
 		this.disciplina = disciplina;
 	}
 
@@ -120,6 +123,19 @@ public class Aluno {
 
 	public void setSerieMatriculado(String serieMatriculado) {
 		this.serieMatriculado = serieMatriculado;
+	}
+	
+	
+	public double getMediaNota() {
+		
+		Double soma = 0.0;
+		
+		for (Disciplina disciplina2 : disciplina) {
+			soma += disciplina2.getNota();
+		}
+		
+		return soma / disciplina.size();
+		
 	}
 
 	@Override
